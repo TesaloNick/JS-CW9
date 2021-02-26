@@ -11,10 +11,16 @@ const createModalWindow = (source) => {
     const close = document.createElement('button')
     close.innerHTML = 'Close'
     close.addEventListener('click', () => {
-        modalContainer.remove()
-    })
+        modalContainer.classList.remove('show')
+        setTimeout(() => {
+            modalContainer.remove() // удаляем дом-узел
+        }, 500)    })
+
     modalContainer.appendChild(close) // добавляем кнопку в дом-узел (модальное окно)
     document.body.appendChild(modalContainer) // добавляем модальное окно в тело документа
+    setTimeout(() => {
+        modalContainer.classList.add('show') // делаем задержку 
+    }, 100)
 }
 
 images.forEach((item, index) => {
